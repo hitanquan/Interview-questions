@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document对象模型（示例）</title>
+</head>
+<body>
+  <div>这是一个div</div>
+  <div>这是另一个div</div>
+</body>
+<script>
+  function printLog() {
+    console.log('querySelectorAll:')
+    var div = document.querySelectorAll('div');
+    console.log(div); //输出一个NodeList
+    console.log(typeof div); //object
+
+    console.log('querySelector:')
+    var div2 = document.querySelector('div');
+    console.log(div2); //输出第一个div元素
+    console.log(typeof div2); //object
+  }
+  this.printLog();
+  //关于以上方法中涉及的api的解释，参考以下链接：
+  //https://developer.mozilla.org/zh-CN/docs/Web/API/Document/querySelectorAll
+</script>
+</html>
