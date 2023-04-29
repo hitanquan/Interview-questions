@@ -1,27 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>闭包</title>
 </head>
+
 <body>
-  
+
 </body>
 <script>
   //闭包用途：闭包让你可以在一个内层函数中访问到其外层函数的作用域
   //在本示例中就是displayName()函数访问到了makeFunc()函数的局部变量name
   //示例源自：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures#%E9%97%AD%E5%8C%85
-  function makeFunc() {
-    var name = "Mozilla";
-    function displayName() {
-        alert(name);
-    }
-    return displayName;
-  }
-  
-  var myFunc = makeFunc();
-  myFunc();
+  // function makeFunc() {
+  //   var name = "Mozilla";
+  //   function displayName() {
+  //     alert(name);
+  //   }
+  //   return displayName;
+  // }
+
+  // var myFunc = makeFunc();
+  // myFunc();
+
+  //闭包的使用场景1:
+  var persons = [
+    { name: 'linda', age: 40 },
+    { name: 'Alice', age: 28 },
+    { name: 'Bob', age: 24 },
+    { name: 'Charlie', age: 32 },
+  ];
+
+  console.log(persons.sort(function (a, b) {
+    if (a.name < b.name) { return -1; }
+    if (a.name > b.name) { return 1; }
+    return 0;
+  }));
+
 </script>
+
 </html>
