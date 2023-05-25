@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>深浅拷贝</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  const sourceObj = { name: 'John', age: 30, address: { city: 'New York', state: 'NY' } };
+  const sourceArr = [
+    { name: 'Tom', age: 20, address: { city: 'New York', state: 'NY' } },
+    { name: 'Linda', age: 10, address: { city: 'New York', state: 'NY' } }
+  ]
+
+  //一、深拷贝
+  //实现深拷⻉方式1：JSON.parse() 和 JSON.stringify() ⽅法
+  const deepClone = (sourceData) => {
+    const result = JSON.parse(JSON.stringify(sourceData));
+    // const result = sourceData; //注意区分这种方式
+    result.address.city = 'Chicago';
+    console.log(sourceData.address.city); // Output: New York
+    console.log(result.address.city); // Output: Chicago
+  }
+
+  // deepClone(sourceObj);
+
+  //实现深拷⻉方式2：递归遍历
+  const deepCloneByRecursive = (sourceData) => {
+    if (typeof sourceData === 'object' && sourceData !== null) {
+      let result = Array.isArray(sourceData) ? [] : {};
+      for (let key in sourceData) {
+        console.log('key', key);
+        if (sourceData.hasOwnProperty(key)) {
+          result[key] = deepCloneByRecursive(sourceData[key]);
+        }
+      }
+      return result;
+    }
+    return sourceData;
+  }
+
+  //输出原数据和拷贝之后的数据
+  console.log(sourceArr, deepCloneByRecursive(sourceArr));
+
+
+  //二、浅拷贝
+  //todo
+</script>
+
+</html>
